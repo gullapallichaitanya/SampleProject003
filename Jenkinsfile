@@ -4,6 +4,8 @@ pipeline {
     tools {
         maven "MAVEN_HOME"
     }
+    
+    parameters { choice(name: 'browser', choices: [' ', 'chrome', 'firefox', 'edge', 'ie', 'safari'], description: '') }
 
     stages {
     	stage('setup') {
@@ -17,8 +19,9 @@ pipeline {
         stage('Build') {
             steps {
                 git 'https://github.com/gullapallichaitanya/SampleProject003.git'
+                echo "Browser: ${params.browser}
 				testBrowser = params.browser
-                bat "mvn -Dmaven.test.failure.ignore=true clean test %testBrowser%"
+                bat 'mvn -Dmaven.test.failure.ignore=true clean test ${params.browser}'
             }
 
             post {
