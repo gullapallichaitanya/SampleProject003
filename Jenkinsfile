@@ -22,7 +22,7 @@ pipeline {
                 	git 'https://github.com/gullapallichaitanya/SampleProject003.git'
                 	println "Browser: ${params.browser}"
                 	BROWSER = params.browser
-                	bat 'mvn -Dmaven.test.failure.ignore=true clean test %BROWSER%'
+                	bat 'mvn -Dmaven.test.failure.ignore=true clean test -DBrowser=%BROWSER%'
                 
                 }
             }
