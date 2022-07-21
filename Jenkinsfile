@@ -18,9 +18,13 @@ pipeline {
            }
         stage('Build') {
             steps {
-                git 'https://github.com/gullapallichaitanya/SampleProject003.git'
-                echo "Browser: ${params.browser}"
-                bat 'mvn -Dmaven.test.failure.ignore=true clean test ${params.browser}'
+                script {
+                	git 'https://github.com/gullapallichaitanya/SampleProject003.git'
+                	println "Browser: ${params.browser}"
+                	BROWSER = params.browser
+                	bat 'mvn -Dmaven.test.failure.ignore=true clean test %BROWSER%'
+                
+                }
             }
 
             post {
