@@ -10,7 +10,7 @@ pipeline {
             steps {
                 browserstack(credentialsId: '8ca7f885-b257-4389-8820-421e6ea983f1')
             }
-            
+           }
         stage('Build') {
             steps {
                 git 'https://github.com/gullapallichaitanya/SampleProject002.git'
