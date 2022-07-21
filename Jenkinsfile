@@ -17,8 +17,8 @@ pipeline {
         stage('Build') {
             steps {
                 git 'https://github.com/gullapallichaitanya/SampleProject003.git'
-				testBrwoser = params.brwoser
-                bat "mvn -Dmaven.test.failure.ignore=true clean test %testBrwoser%"
+				testBrowser = params.browser
+                bat "mvn -Dmaven.test.failure.ignore=true clean test %testBrowser%"
             }
 
             post {
